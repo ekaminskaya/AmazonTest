@@ -2,5 +2,9 @@ public enum Language {
     EN,
     ES,
     AR,
-    DE
+    DE,
+    HE,
+    KO,
+    PT,
+    ZH
 }

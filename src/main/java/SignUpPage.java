@@ -1,7 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class SignUpPage extends BasePage{
+public class SignUpPage extends BasePage {
     public By userNameField = By.xpath(".//input[@id='ap_customer_name']");
     public By emailField = By.xpath("//*[@id='ap_email']");
     public By passwordField = By.xpath("//*[@id='ap_password']");
@@ -12,11 +12,15 @@ public class SignUpPage extends BasePage{
     public By createAccountFormHeader = By.xpath("//h1[contains(text(),'Create account')]");
     public By needHelpLink = By.xpath("//*[@class='a-expander-prompt']/ancestor::a");
 
-    public void fillUserName(String userName){
-       driver.findElement(userNameField).sendKeys(userName);
+    protected void openPage() {
+        super.openPage("signUp");
     }
 
-    public void fillEmailField(String email){
+    public void fillUserName(String userName) {
+        driver.findElement(userNameField).sendKeys(userName);
+    }
+
+    public void fillEmailField(String email) {
         driver.findElement(emailField).sendKeys(email);
     }
 
@@ -24,14 +28,15 @@ public class SignUpPage extends BasePage{
         driver.findElement(createAccountButton).click();
     }
 
-    public String getContinueButtonText(){
+    public String getContinueButtonText() {
         WebElement buttonText = driver.findElement(continueVerifyButton).findElement(By.xpath("//span[@class='email-text']"));
-             return  buttonText.getText();
+        return buttonText.getText();
     }
 
-    public void fillPasswordField(String password){
+    public void fillPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
+
     public void clickOnNeedHelpLink() {
         driver.findElement(needHelpLink).click();
     }

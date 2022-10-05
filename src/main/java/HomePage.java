@@ -7,6 +7,7 @@ public class HomePage extends BasePage{
     public By languageChange = By.xpath("//*[@aria-label='Choose a language for shopping.']");
     public By deliverTo = By.xpath("//*[@id='nav-global-location-popover-link']");
     public By signInButton = By.xpath("//*[@data-nav-ref='nav_ya_signin']");
+    public By navMenu = By.xpath("//div[@id='nav-belt']");
 
     public void clickOnSignIn(){
         driver.findElement(signInButton).click();
@@ -28,8 +29,21 @@ public class HomePage extends BasePage{
         driver.findElement(languageChange).click();
     }
 
+
+
     public void clickOnDeliverTo(){
         driver.findElement(deliverTo).click();
     }
+
+    public void openPage(){
+        super.openPage("home");
+        if (!isElementPresent(navMenu)) {
+            driver.close();
+            driver.get(baseUrl);
+        }
+
+    }
+
+
 
 }
