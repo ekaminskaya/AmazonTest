@@ -1,4 +1,5 @@
 public enum Currency {
+    USD,
     CLP,
     COP,
     HKD,

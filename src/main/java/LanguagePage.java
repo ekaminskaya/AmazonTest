@@ -5,18 +5,21 @@ import org.openqa.selenium.support.ui.Select;
 
 public class LanguagePage extends BasePage {
 
+    protected String url = "/customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=topnav_lang_ais";
+
     public By languageList = By.xpath("//input[@name='lop']");
     public By languageItems = By.xpath("//div[@class='a-radio a-radio-fancy']");
     public String itemInList = "//*[@value='%s']";
-    public By currencyList = By.xpath("//*[@id='icp-currency-dropdown']");
+    public By currencyList = By.xpath("//*[@class='a-dropdown-container']");
+    public By currencyListItems = By.xpath("//li[@class='a-dropdown-item']");
     public By currencyListValue = By.xpath("//span[@class='a-dropdown-prompt']");
 
     protected void openPage() {
-        super.openPage("language");
+        super.openPage(url);
     }
 
-    public WebElement findItemInTheLanguageListByIndex(String value, int index) {
-        return driver.findElements(languageList).get(index).findElement(By.xpath(String.format(itemInList, value)));
+    public WebElement findItemInTheLanguageList(Language language) {
+        return driver.findElements(languageList).get(language.ordinal());
     }
 
     public boolean isLanguageChecked(Language language) {
@@ -31,10 +34,9 @@ public class LanguagePage extends BasePage {
         return driver.findElement(currencyListValue).getText();
     }
 
-    public void changeCurrency(String newCurrency) {
-        Select currency = new Select(driver.findElement(currencyList));
-        currency.selectByValue(newCurrency);
-        wait.until(ExpectedConditions.presenceOfElementLocated(currencyList));
+    public void changeCurrency(Currency currency) {
+        driver.findElement(currencyList).click();
+        driver.findElements(currencyListItems).get(currency.ordinal()).click();
     }
 
 

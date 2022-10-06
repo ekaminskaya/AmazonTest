@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 
 public class SignUpPageTests extends BaseTest{
 
+    SignUpPage signUpPage = new SignUpPage();
+
     @BeforeTest
     public void beforeTest(){
         signUpPage.openPage();
@@ -17,7 +19,6 @@ public class SignUpPageTests extends BaseTest{
 
     @Test
     public void verifyButtonChangeDuringLogin() {
-        homePage.clickOnSignIn();
         signUpPage.clickOnCreateAccountButton();
         signUpPage.fillUserName("Helen");
         signUpPage.fillEmailField("testHelen@gmail.com");
@@ -27,7 +28,6 @@ public class SignUpPageTests extends BaseTest{
 
     @Test
     public void verifyForgotPasswordFormHeader() {
-        homePage.clickOnSignIn();
         signUpPage.clickOnNeedHelpLink();
         signUpPage.clickOnForgotPasswordLink();
         Assert.assertEquals(signUpPage.getForgotPasswordFormHeader(), "Password assistance");

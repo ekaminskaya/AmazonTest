@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage{
+
+    protected String url = "";
     public By searchButton = By.xpath("//*[@type='submit']");
     public By dismissButton = By.xpath("//*[@data-action-type='DISMISS']");
     public By hamburgerMenu = By.xpath("//*[@id='nav-hamburger-menu']");
@@ -29,19 +31,16 @@ public class HomePage extends BasePage{
         driver.findElement(languageChange).click();
     }
 
-
-
     public void clickOnDeliverTo(){
         driver.findElement(deliverTo).click();
     }
 
     public void openPage(){
-        super.openPage("home");
+        super.openPage(url);
         if (!isElementPresent(navMenu)) {
             driver.close();
             driver.get(baseUrl);
         }
-
     }
 
 

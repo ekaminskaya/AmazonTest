@@ -4,15 +4,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest{
+    HomePage homePage = new HomePage();
+
     @BeforeTest
-    public void beforeTest(){
+    public void beforeMethod(){
         homePage.openPage();
     }
-
-    @AfterTest
-    public void afterTest(){
-        driver.quit();
-    }
-
 
 }

@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class SignUpPage extends BasePage {
+    protected String url = "/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.com%2F%3Fref_%3Dnav_ya_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&";
+
     public By userNameField = By.xpath(".//input[@id='ap_customer_name']");
     public By emailField = By.xpath("//*[@id='ap_email']");
     public By passwordField = By.xpath("//*[@id='ap_password']");
@@ -13,7 +15,7 @@ public class SignUpPage extends BasePage {
     public By needHelpLink = By.xpath("//*[@class='a-expander-prompt']/ancestor::a");
 
     protected void openPage() {
-        super.openPage("signUp");
+        super.openPage(url);
     }
 
     public void fillUserName(String userName) {
