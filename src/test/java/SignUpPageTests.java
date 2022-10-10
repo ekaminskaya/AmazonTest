@@ -23,7 +23,7 @@ public class SignUpPageTests extends BaseTest{
         signUpPage.fillUserName("Helen");
         signUpPage.fillEmailField("testHelen@gmail.com");
         signUpPage.fillPasswordField("QWERTY123");
-        Assert.assertEquals(signUpPage.getContinueButtonText(), "Verify email");
+        Assert.assertEquals(signUpPage.getContinueButtonText(), signUpPage.buttonText);
     }
 
     @Test

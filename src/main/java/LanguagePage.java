@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 public class LanguagePage extends BasePage {
 
     protected String url = "/customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=topnav_lang_ais";
+    protected String languageIsNotSelectedText = "Language is not selected";
 
     public By languageList = By.xpath("//input[@name='lop']");
     public By languageItems = By.xpath("//div[@class='a-radio a-radio-fancy']");

@@ -18,7 +18,7 @@ public class LanguagePageTests extends BaseTest {
 
     @Test
     public void verifyDefaultLanguage() {
-        Assert.assertTrue(languagePage.isLanguageChecked(Language.EN), "Language is not selected");
+        Assert.assertTrue(languagePage.isLanguageChecked(Language.EN), languagePage.languageIsNotSelectedText);
         Assert.assertEquals(languagePage.getLanguageValue(Language.EN), "English - EN");
     }
 
