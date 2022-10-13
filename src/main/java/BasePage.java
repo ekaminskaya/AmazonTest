@@ -4,11 +4,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasePage {
+public abstract class BasePage {
 
+    protected static final String BASE_URL = "https://www.amazon.com";
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected String baseUrl = "https://www.amazon.com";
+    public Element element = new Element();
 
     public BasePage() {
         this.driver = BaseDriver.getDriver();
@@ -16,7 +17,7 @@ public class BasePage {
     }
 
    protected void openPage(String url){
-        driver.get(baseUrl + url);
+        driver.get(BASE_URL + url);
    }
 
     public boolean isElementPresent(By locator) {
