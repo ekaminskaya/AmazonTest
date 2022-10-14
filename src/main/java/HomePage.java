@@ -62,7 +62,7 @@ public class HomePage extends BasePage {
         }
     }
 
-    public List<String> getSearchDropdownItems() {
+    public List<String> getSearchDropdownItemsString() {
         List<String> dropdownItemsText = new ArrayList<>();
         List<WebElement> dropdownItems = driver.findElements(searchDropdownItems);
         for (int i = 0; i < dropdownItems.size(); i++) {

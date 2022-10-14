@@ -24,12 +24,12 @@ public class SignUpPage extends BasePage {
     }
 
     public void fillUserName(String userName) {
-        log.info("Fill 'userName' field");
+        log.info("Fill 'userName' field" + userName);
         driver.findElement(userNameField).sendKeys(userName);
     }
 
     public void fillEmailField(String email) {
-        log.info("Fill 'email' field");
+        log.info("Fill 'email' field" + email);
         driver.findElement(emailField).sendKeys(email);
     }
 
@@ -45,7 +45,7 @@ public class SignUpPage extends BasePage {
     }
 
     public void fillPasswordField(String password) {
-        log.info("Fill 'password' field");
+        log.info("Fill 'password' field" + password);
         driver.findElement(passwordField).sendKeys(password);
     }
 
@@ -64,11 +64,6 @@ public class SignUpPage extends BasePage {
     public String getForgotPasswordFormHeader() {
         log.info("Open 'Forgot password' page");
         return driver.findElement(forgotPasswordFormHeader).getText();
-    }
-
-    public void fillPasswordField2(String password) {
-        log.info("Fill 'password' field");
-        element.findMyElement(passwordField).sendKeys(password);
     }
 
 }

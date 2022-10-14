@@ -7,22 +7,27 @@ import java.util.List;
 
 public class Element implements WebElement {
 
-    protected WebDriver driver = BaseDriver.initDriver();
-    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    protected Element element;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected WebElement element;
 
-    public Element findMyElement(By locator) {
-        return (Element) driver.findElement(locator);
+    public Element(WebElement element){
+        this.element = element;
+    }
+
+    public Element find(By locator) {
+        element.findElement(locator);
+        return this;
     }
 
     @Override
     public void click() {
-        System.out.println("Click on the element");
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     @Override
     public void submit() {
-     wait.until(ExpectedConditions.elementToBeClickable((WebElement) this));
+     wait.until(ExpectedConditions.elementToBeClickable(element));
      click();
     }
 
@@ -33,7 +38,7 @@ public class Element implements WebElement {
 
     @Override
     public void clear() {
-
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     @Override
