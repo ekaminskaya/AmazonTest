@@ -1,11 +1,9 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class LanguagePage extends BasePage {
 
-    private static final Logger log = LogManager.getLogger(LanguagePage.class);
     private static final String URL = "/customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=topnav_lang_ais";
     protected String languageIsNotSelectedText = "Language is not selected";
 
@@ -38,14 +36,14 @@ public class LanguagePage extends BasePage {
 
     public String getDefaultCurrency() {
         log.info("Find default item in the 'Currency' list");
-        return driver.findElement(currencyListValue).getText();
+        return new Element().find(currencyListValue).getText();
     }
 
     public void changeCurrency(Currency currency) {
         log.info("Click 'Currency' list");
-        driver.findElement(currencyList).click();
+        Element.find(currencyList).click();
         log.info("Click on 'Currency' item");
-        driver.findElements(currencyListItems).get(currency.ordinal()).click();
+        Element.findAllElements(currencyListItems).get(currency.ordinal()).click();
     }
 
 

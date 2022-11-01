@@ -1,16 +1,12 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class HomePage extends BasePage {
 
-    private static final Logger log = LogManager.getLogger(HomePage.class);
     private static final String URL = "";
 
     public By searchButton = By.xpath("//*[@type='submit']");

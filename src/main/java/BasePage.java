@@ -11,6 +11,9 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
+    Log log = new Log();
+//    Element myElement = new Element();
+
     public BasePage() {
         this.driver = BaseDriver.getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));

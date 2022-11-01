@@ -1,54 +1,60 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.List;
 
 public class Element implements WebElement {
 
-    protected WebDriver driver;
+    protected static WebDriver driver = BaseDriver.getDriver();
     protected WebDriverWait wait;
     protected WebElement element;
 
-    public Element(WebElement element){
-        this.element = element;
+    public static Element find(By locator) {
+        Element myElement = new Element();
+        myElement = (Element) driver.findElement(locator);
+        return myElement;
     }
 
-    public Element find(By locator) {
-        element.findElement(locator);
-        return this;
+    public static List<Element> findAllElements(By locator) {
+        List<Element> myElements = null;
+        for (WebElement element : driver.findElements(locator)){
+            myElements.add((Element) element);
+        }
+        return myElements;
     }
 
     @Override
     public void click() {
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
 
     @Override
     public void submit() {
      wait.until(ExpectedConditions.elementToBeClickable(element));
-     click();
+     element.submit();
     }
 
     @Override
     public void sendKeys(CharSequence... keysToSend) {
         clear();
+        element.sendKeys();
     }
 
     @Override
     public void clear() {
         wait.until(ExpectedConditions.visibilityOf(element));
+        element.clear();
     }
 
     @Override
     public String getTagName() {
-        return null;
+        return element.getTagName();
     }
 
     @Override
     public String getAttribute(String name) {
-        return null;
+        return element.getAttribute(name);
     }
 
     @Override
@@ -63,7 +69,7 @@ public class Element implements WebElement {
 
     @Override
     public String getText() {
-        return null;
+        return element.getText();
     }
 
     @Override
@@ -83,17 +89,17 @@ public class Element implements WebElement {
 
     @Override
     public Point getLocation() {
-        return null;
+        return element.getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        return null;
+        return element.getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        return null;
+        return element.getRect();
     }
 
     @Override
