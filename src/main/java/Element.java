@@ -7,12 +7,11 @@ public class Element implements WebElement {
 
     protected static WebDriver driver = BaseDriver.getDriver();
     protected WebDriverWait wait;
-    protected WebElement element;
+    protected static WebElement element;
 
     public static Element find(By locator) {
-        Element myElement = new Element();
-        myElement = (Element) driver.findElement(locator);
-        return myElement;
+        element = driver.findElement(locator);
+        return new Element();
     }
 
     public static List<Element> findAllElements(By locator) {

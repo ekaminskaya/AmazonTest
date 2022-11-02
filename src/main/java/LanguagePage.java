@@ -36,7 +36,7 @@ public class LanguagePage extends BasePage {
 
     public String getDefaultCurrency() {
         log.info("Find default item in the 'Currency' list");
-        return new Element().find(currencyListValue).getText();
+        return Element.find(currencyListValue).getText();
     }
 
     public void changeCurrency(Currency currency) {
