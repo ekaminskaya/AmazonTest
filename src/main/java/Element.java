@@ -1,23 +1,30 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Element implements WebElement {
 
     protected static WebDriver driver = BaseDriver.getDriver();
-    protected WebDriverWait wait;
-    protected static WebElement element;
+    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    protected WebElement element;
 
-    public static Element find(By locator) {
-        element = driver.findElement(locator);
-        return new Element();
+    public Element(WebElement element){
+        this.element=element;
     }
 
-    public static List<Element> findAllElements(By locator) {
-        List<Element> myElements = null;
+    public Element find(By locator) {
+        element = driver.findElement(locator);
+        return new Element(element);
+    }
+
+    public List<Element> findAllElements(By locator) {
+        List<Element> myElements = new ArrayList<>();
         for (WebElement element : driver.findElements(locator)){
-            myElements.add((Element) element);
+            myElements.add(new Element(element));
         }
         return myElements;
     }
@@ -37,7 +44,7 @@ public class Element implements WebElement {
     @Override
     public void sendKeys(CharSequence... keysToSend) {
         clear();
-        element.sendKeys();
+        element.sendKeys(keysToSend);
     }
 
     @Override
@@ -58,12 +65,12 @@ public class Element implements WebElement {
 
     @Override
     public boolean isSelected() {
-        return false;
+        return element.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return element.isEnabled();
     }
 
     @Override
@@ -83,7 +90,7 @@ public class Element implements WebElement {
 
     @Override
     public boolean isDisplayed() {
-        return false;
+        return element.isDisplayed();
     }
 
     @Override
@@ -103,7 +110,7 @@ public class Element implements WebElement {
 
     @Override
     public String getCssValue(String propertyName) {
-        return null;
+        return element.getCssValue(propertyName);
     }
 
     @Override
