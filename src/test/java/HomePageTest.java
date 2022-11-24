@@ -11,4 +11,8 @@ public class HomePageTest extends BaseTest{
         homePage.openPage();
     }
 
+    @Test
+    public void verifyGamingAccessoriesCardItemsSize(){
+        Assert.assertEquals(homePage.getGamingAccessoriesCardItemsListSize(), 4);
+    }
 }

@@ -29,7 +29,9 @@ public class LanguagePageTests extends BaseTest {
 
     @Test
     public void verifyCurrencyChange() {
-        languagePage.changeCurrency(Currency.IDR);
-        Assert.assertEquals(languagePage.getDefaultCurrency(), "IDR - Indonesian Rupiah");
+        languagePage.closePopUpIfPresent();
+        languagePage.changeCurrency(Currency.PLN);
+        Assert.assertEquals(languagePage.getDefaultCurrency(), "PLN - Polish Zloty");
     }
+
 }
