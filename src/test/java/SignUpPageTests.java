@@ -18,12 +18,18 @@ public class SignUpPageTests extends BaseTest{
     }
 
     @Test
+    public void verifyCreateAccountButton(){
+        signUpPage.clickOnCreateAccountButton();
+        Assert.assertEquals(signUpPage.getCreateAccountFormHeader(), "Create account");
+    }
+
+    @Test
     public void verifyButtonChangeDuringLogin() {
         signUpPage.clickOnCreateAccountButton();
         signUpPage.fillUserName("Helen");
         signUpPage.fillEmailField("testHelen@gmail.com");
         signUpPage.fillPasswordField("QWERTY123");
-        Assert.assertEquals(signUpPage.getContinueButtonText(), signUpPage.buttonText);
+        Assert.assertEquals(signUpPage.getContinueButtonText(), signUpPage.BUTTON_TEXT);
     }
 
     @Test

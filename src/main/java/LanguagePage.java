@@ -1,29 +1,21 @@
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class LanguagePage extends BasePage {
 
     private static final String URL = "/customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=topnav_lang_ais";
-    protected String languageIsNotSelectedText = "Language is not selected";
+    public final String LANGUAGE_IS_NOT_SELECTED_TEXT = "Language is not selected";
 
     private By languageList = By.xpath("//input[@name='lop']");
     private By languageItems = By.xpath("//div[@class='a-radio a-radio-fancy']");
-    private String itemInList = "//*[@value='%s']";
     private By currencyList = By.xpath("//*[@class='a-dropdown-container']");
     private By currencyListItems = By.xpath("//li[@class='a-dropdown-item']");
     private By currencyListValue = By.xpath("//span[@class='a-dropdown-prompt']");
     private By dismissButton = By.xpath("//*[@data-action-type='DISMISS']");
-    private By languageWorkSpace = By.xpath("//*[@class='a-row']");
 
-    protected void openPage() {
+    public void openPage() {
         log.info("Open the 'Language' page");
         super.openPage(URL);
-    }
-
-    public WebElement findItemInTheLanguageList(Language language) {
-        log.info("Find item in the 'Language' list");
-        return findAllElements(languageList).get(language.ordinal());
     }
 
     public boolean isLanguageChecked(Language language) {
