@@ -19,12 +19,16 @@ public abstract class BasePage extends Element {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    protected void openPage(String url) {
+    public void openPage(String url) {
         driver.get(BASE_URL + url);
     }
 
     public boolean isElementPresent(By locator) {
         return driver.findElements(locator).size() > 0;
+    }
+
+    public String getPageHeader(By locator){
+        return find(locator).getText();
     }
 
 }
